@@ -1248,5 +1248,44 @@ graph TD
 
 ---
 
+## Lộ trình tối thiểu để hoàn thành chức năng cơ bản
+
+1. Hoàn thiện authentication + authorization
+   - Đăng ký, đăng nhập, refresh token, lấy thông tin user hiện tại
+   - Bảo vệ API bằng JWT và xử lý lỗi 401/403
+
+2. Xây dựng profile người dùng và tìm kiếm
+   - API cập nhật profile (`PUT /api/users/me`)
+   - Tìm kiếm người dùng (`GET /api/users?q={keyword}`)
+   - Hiển thị danh sách bạn bè và trạng thái online cơ bản
+
+3. Triển khai chat 1-1
+   - Tạo và lấy conversation private
+   - Gửi, nhận, hiện tin nhắn text qua WebSocket
+   - Lưu tin nhắn vào cơ sở dữ liệu và hiển thị lịch sử chat
+
+4. Xây dựng read receipt và trạng thái online/offline
+   - Ghi nhận đã đọc tin nhắn (`message_reads`)
+   - Broadcast trạng thái online/offline qua WebSocket
+   - Hiển thị nhận biết tin nhắn đã đọc trên UI
+
+5. Tạo chức năng kết bạn cơ bản
+   - Gửi, chấp nhận, từ chối, hủy lời mời kết bạn
+   - Lưu quan hệ bạn bè và chuyển sang chat 1-1 khi đã là bạn bè
+
+6. Thông báo in-app tối thiểu
+   - Tạo notification cho tin nhắn mới và friend request
+   - Lấy danh sách thông báo chưa đọc và đánh dấu đã đọc
+
+7. Phân trang lịch sử tin nhắn
+   - API tải tin nhắn theo trang cho conversation lớn
+   - UI tải thêm khi cuộn lên
+
+8. Kiểm thử và hoàn thiện
+   - Kiểm tra luồng đăng nhập → chat → kết bạn → thông báo
+   - Đảm bảo xử lý lỗi, xác thực truy cập, và trải nghiệm người dùng
+
+> Với những bước này, ứng dụng sẽ có bộ chức năng cơ bản đầy đủ: đăng nhập, chat 1-1, quản lý bạn bè, thông báo, và hiển thị trạng thái realtime.
+
 > **📝 Document Status:** Complete — Covers all 9 features with detailed data flow  
 > **🔄 Next Update:** Add Sequence Diagrams for complex flows (OAuth2, Group Chat)
